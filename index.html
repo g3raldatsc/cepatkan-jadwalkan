@@ -1,13 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Project</title>
+  <meta charset="UTF-8">
+  <title>Jadwal Pintar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>percobaan adalah awal dari keberhasilan</h1>
+
+<div class="container py-5">
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="card shadow-sm mx-auto" style="max-width:400px">
+    <div class="card-body">
+      <h3 class="text-center mb-3">🕒 Jadwal Pintar</h3>
+
+      <input id="email" class="form-control mb-2" placeholder="Email">
+      <input id="password" type="password" class="form-control mb-3" placeholder="Password">
+
+      <button class="btn btn-primary w-100" onclick="login()">Masuk</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="d-none">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group shadow-sm">
+          <button class="list-group-item list-group-item-action" onclick="showSection('jadwal')">
+            📋 Jadwal
+          </button>
+          <button class="list-group-item list-group-item-action" onclick="showSection('tambah')">
+            ➕ Tambah
+          </button>
+          <button class="list-group-item list-group-item-action" onclick="showSection('bug')">
+            🐞 Bug
+          </button>
+          <button class="list-group-item list-group-item-action text-danger" onclick="logout()">
+            🚪 Logout
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <!-- JADWAL -->
+        <div id="jadwal" class="content">
+          <h4>Jadwal Saya</h4>
+          <div id="jadwalList"></div>
+        </div>
+
+        <!-- TAMBAH -->
+        <div id="tambah" class="content d-none">
+          <h4 id="formTitle">Tambah Jadwal</h4>
+
+        <input id="judul" class="form-control mb-2" placeholder="Judul">
+
+        <input id="tanggal" type="date" class="form-control mb-2">
+
+        <div class="row">
+        <div class="col">
+        <input id="mulai" type="time" class="form-control mb-2">
+        </div>
+        <div class="col">
+        <input id="selesai" type="time" class="form-control mb-2">
+        </div>
+        </div>
+
+        <button class="btn btn-success" onclick="simpanJadwal()">Simpan</button>
+        <button class="btn btn-secondary" onclick="resetForm()">Batal</button>
+        </div>
+
+
+        <!-- BUG -->
+        <div id="bug" class="content d-none">
+          <h4>Lapor Bug</h4>
+          <textarea class="form-control mb-2"></textarea>
+          <button class="btn btn-warning">Kirim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
