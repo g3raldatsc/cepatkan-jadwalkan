@@ -1,62 +1,52 @@
-# 📅 Cepatkan Jadwalkan — Smart Schedule Dashboard
+# Apa itu Cepatkan Jadwalkan?
 
-![Status](https://img.shields.io/badge/status-active-success)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Tech](https://img.shields.io/badge/tech-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
-![Storage](https://img.shields.io/badge/storage-localStorage-lightgrey)
-
-**Jadwal Pintar** adalah aplikasi web sederhana berbasis **Front-End Only** yang membantu pengguna:
-- Mengelola jadwal pribadi
-- Mendeteksi bentrokan waktu
-- Mengelola jadwal secara terpisah untuk setiap user
-- Belajar konsep **auth, session, dan data isolation** tanpa backend
-
-> Project ini dibuat sebagai **project pembelajaran & portofolio**, dengan arsitektur yang mudah dikembangkan ke backend (SQLite / API).
+**Cepatkan Jadwalkan** adalah aplikasi web sederhana yang membantu pengguna mengelola jadwal hariannya dengan baik. **Cepatkan Jadwalkan** dirancang dengan desain dan tampilan yang mengandalkan html dan css, dan javascript sebagai alur logika berjalannya aplikasi web **Cepatkan Jadwalkan**
 
 ---
 
-## ✨ Fitur Utama
+## Tujuan Pengembangan
 
-### 🔐 Autentikasi User
-- Register akun baru
-- Login & Logout
-- Session user (simulasi backend)
-
-### 👥 Multi User
-- Setiap user memiliki **jadwal masing-masing**
-- Data **tidak tercampur** antar user
-- Contoh:
-  - `excel@gmail.com` → jadwal sendiri
-  - `yanto@gmail.com` → jadwal sendiri
-
-### 🗓️ Manajemen Jadwal (CRUD)
-- Tambah jadwal
-- Edit jadwal
-- Hapus jadwal
-- Validasi jam mulai & selesai
-- Deteksi **jadwal bentrok otomatis**
-
-### 🎨 UI Modern & Responsif
-- Menggunakan **Bootstrap 5**
-- Clean layout
-- Mudah dikembangkan menjadi admin dashboard
+Tujuan umum pengembangan aplikasi web ini adalah untuk membantu orang-orang yang kesulitan dalam mengatur jadwal harian mereka dan menciptakan orang-orang yang disiplin dan produktif terhadap waktu.
+**Cepatkan Jadwalkan** kami ciptakan guna melatih hardskill kami di bidang frontend dan backend. Tidak hanya itu, pengembangan ini dilakukan paling utamanya untuk melatih hardskill kami di bagian desain web.
 
 ---
 
-## 🧠 Konsep Arsitektur
+## Fitur Utama
 
-```text
-User
- │
- │ Login / Register
- ▼
-Session (localStorage)
- │
- ▼
-Data User
- ├── password
- └── jadwal[]
-      ├── judul
-      ├── tanggal
-      ├── jam mulai
-      └── jam selesai
+Adapun fitur utama dari aplikasi web ini ialah:
+
+1. Akun pribadi
+    Setiap pengguna memiliki akun pribadi tempat mereka mengatur jadwal mereka.
+
+2. Manajemen jadwal harian
+    Aplikasi web ini dikembangkan untuk pengguna mengatur jadwal harian mereka. Pengguna bebas mengatur jadwal mereka tiap harinya dan akan berulang sampai pengguna mengatur ulang jadwal harian mereka.
+
+3. Fitur Pengingat
+    Aplikasi web ini memiliki fitur pengingat jadwal pengguna melalui notifikasi yang muncul pada perangkat.
+
+4. Desain Web
+    Kami akan selalu mengupdate bagian desain web di tiap empat musim. Hal ini bersesuaian dengan tujuan pengembangan aplikasi web ini yaitu untuk  melatih hardskill kami dalam pengembangan desain web.
+
+---
+
+## Motivasi Kami
+
+Kami akan selalu berupaya untuk melakukan pengembangan pada aplikasi web **Cepatkan Jadwalkan** ini dengan bertahap agar hardskill kami dalam pengembangan aplikasi web selalu meningkat.
+
+---
+
+## Pesan dari Pengembang
+
+Kepada pengguna aplikasi web ini, gunakan dengan bijak dan semoga bermanfaat. Maaf jika aplikasi web ini masih banyak kekurangannya. Karena aplikasi web ini kami kembangkan untuk melatih diri kami. Terima kasih.
+
+---
+
+## Tim Pengembang
+
+- Gerald Jepedro Sitorus = BackEnd dan Desain Web [@g3raldatsc](https://github.com/g3raldatsc)
+- Excelyno Magenta       = FrontEnd dan Tester
+- Vincent Alexander      = Desain Web
+
+<p align="center">
+  <img src="https://media.tenor.com/d7-scpQa2VYAAAAM/umamusume-uma-musume.gif" width="200" alt="Anime Gif">
+</p>
