@@ -1,144 +1,57 @@
-let editIndex = null;
+// nyambungkan elemen html
+const tombolMasuk = document.getElementById("tombol-masuk-google");
+const tombolKeluar = document.getElementById("tombol-keluar");
+const halamanMasuk = document.getElementById("halaman-masuk");
+const halamanBeranda = document.getElementById("halaman-beranda");
+const teksSapaan = document.getElementById("teks-sapaan");
 
-const loginBox = document.getElementById("loginBox");
-const dashboard = document.getElementById("dashboard");
-const jadwalList = document.getElementById("jadwalList");
-
-/* ================= LOGIN ================= */
-function login() {
-  const email = document.getElementById("email").value;
-  if (!email) return alert("Email wajib diisi");
-
-  localStorage.setItem("user", email);
-  showDashboard();
+// Sudah kunyalakan authorisasinya ya, lebih baik google only aja daripada buat pw sendiri
+function masukGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    // Membuka jendela popup Google
+    auth.signInWithPopup(provider)
+        .then((result) => {
+            console.log("Berhasil masuk sebagai:", result.user.displayName);
+        })
+        .catch((error) => {
+            console.error("Gagal masuk:", error);
+            alert("Ups! Gagal masuk: " + error.message);
+        });
 }
 
-function logout() {
-  localStorage.removeItem("user");
-  location.reload();
+// Logout (Dipanggil saat tombol Keluar dipencet)
+function keluarSistem() {
+    auth.signOut()
+        .then(() => {
+            console.log("Berhasil keluar");
+        })
+        .catch((error) => {
+            console.error("Gagal keluar:", error);
+        });
 }
 
-function showDashboard() {
-  loginBox.classList.add("d-none");
-  dashboard.classList.remove("d-none");
-  loadJadwal();
-}
-
-/* ================= NAV ================= */
-function showSection(id) {
-  document.querySelectorAll(".content").forEach(c => c.classList.add("d-none"));
-  document.getElementById(id).classList.remove("d-none");
-}
-
-/* ================= JADWAL ================= */
-function simpanJadwal() {
-  const judul = judulInput.value;
-  const tanggal = tanggalInput.value;
-  const mulai = mulaiInput.value;
-  const selesai = selesaiInput.value;
-
-  if (!judul || !tanggal || !mulai || !selesai) {
-    return alert("Semua field wajib diisi");
-  }
-
-  if (mulai >= selesai) {
-    return alert("Jam mulai harus lebih kecil dari jam selesai");
-  }
-
-  const jadwal = JSON.parse(localStorage.getItem("jadwal")) || [];
-
-  // VALIDASI BENTROK
-  for (let i = 0; i < jadwal.length; i++) {
-    if (editIndex !== null && i === editIndex) continue;
-
-    const j = jadwal[i];
-    if (j.tanggal === tanggal) {
-      if (mulai < j.selesai && selesai > j.mulai) {
-        return alert("Jadwal bentrok dengan: " + j.judul);
-      }
+// Kode login atau logout
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        // login
+        console.log("User terdeteksi:", user.displayName);
+        
+        // 1. Ganti tampilan
+        halamanMasuk.style.display = "none";     // Halaman login hilang
+        halamanBeranda.style.display = "block";  // Halaman dashboard muncul
+        
+        // 2. Tampilkan nama user di sapaan
+        teksSapaan.innerText = user.displayName; 
+        
+    } else {
+        // belum login/logout
+        console.log("Tidak ada user login.");
+        
+        // 1. Ganti tampilan
+        halamanMasuk.style.display = "flex";     // Halaman login muncul (flex biar di tengah)
+        halamanBeranda.style.display = "none";   // Halaman dashboard hilang
     }
-  }
+});
 
-  const data = { judul, tanggal, mulai, selesai };
-
-  if (editIndex === null) {
-    jadwal.push(data);
-  } else {
-    jadwal[editIndex] = data;
-    editIndex = null;
-  }
-
-  localStorage.setItem("jadwal", JSON.stringify(jadwal));
-  resetForm();
-  loadJadwal();
-  showSection("jadwal");
-}
-
-/* ================= EDIT ================= */
-function editJadwal(index) {
-  const jadwal = JSON.parse(localStorage.getItem("jadwal"));
-  const j = jadwal[index];
-
-  judulInput.value = j.judul;
-  tanggalInput.value = j.tanggal;
-  mulaiInput.value = j.mulai;
-  selesaiInput.value = j.selesai;
-
-  editIndex = index;
-  document.getElementById("formTitle").innerText = "Edit Jadwal";
-  showSection("tambah");
-}
-
-/* ================= HAPUS ================= */
-function hapusJadwal(index) {
-  if (!confirm("Yakin hapus jadwal?")) return;
-
-  const jadwal = JSON.parse(localStorage.getItem("jadwal"));
-  jadwal.splice(index, 1);
-  localStorage.setItem("jadwal", JSON.stringify(jadwal));
-  loadJadwal();
-}
-
-/* ================= LOAD ================= */
-function loadJadwal() {
-  jadwalList.innerHTML = "";
-  const jadwal = JSON.parse(localStorage.getItem("jadwal")) || [];
-
-  if (jadwal.length === 0) {
-    jadwalList.innerHTML = "<p class='text-muted'>Belum ada jadwal</p>";
-    return;
-  }
-
-  jadwal.forEach((j, i) => {
-    jadwalList.innerHTML += `
-      <div class="item">
-        <strong>${j.judul}</strong><br>
-        ${j.tanggal} | ${j.mulai} - ${j.selesai}
-        <div class="mt-2">
-          <button class="btn btn-sm btn-warning" onclick="editJadwal(${i})">Edit</button>
-          <button class="btn btn-sm btn-danger" onclick="hapusJadwal(${i})">Hapus</button>
-        </div>
-      </div>
-    `;
-  });
-}
-
-/* ================= UTIL ================= */
-function resetForm() {
-  judulInput.value = "";
-  tanggalInput.value = "";
-  mulaiInput.value = "";
-  selesaiInput.value = "";
-  editIndex = null;
-  document.getElementById("formTitle").innerText = "Tambah Jadwal";
-}
-
-/* ================= INIT ================= */
-const judulInput = document.getElementById("judul");
-const tanggalInput = document.getElementById("tanggal");
-const mulaiInput = document.getElementById("mulai");
-const selesaiInput = document.getElementById("selesai");
-
-if (localStorage.getItem("user")) {
-  showDashboard();
-}
+tombolMasuk.addEventListener("click", masukGoogle);
+tombolKeluar.addEventListener("click", keluarSistem);

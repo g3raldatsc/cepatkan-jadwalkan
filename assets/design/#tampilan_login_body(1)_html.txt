@@ -1,0 +1,24 @@
+<body>
+
+    <div id="halaman-masuk" class="container-tengah">
+        <div class="kartu-login">
+            <h1>CEPATKAN JADWALKAN</h1>
+            
+            <div class="quote-area">
+                <p class="quote-text">"Waktu yang berlalu tak bisa kembali.<br>Atur sekarang, nikmati nanti."</p>
+                <p class="quote-sub">Disiplin dan produktif adalah kunci kesuksesan.</p>
+            </div>
+            
+            <button id="tombol-masuk-google" class="btn-google">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" width="18">
+                Masuk dengan Google
+            </button>
+
+            <p class="footer-text">Project oleh Gerald & Excel</p>
+        </div>
+    </div>
+    
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+
+</body>

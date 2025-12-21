@@ -1,1 +1,33 @@
-haiii
+Ide Website
+-------------------------------
+
+Judul: Cepatkan Jadwalkan
+
+Manfaat Website: 
+1. Membantu user mengecek jadwal.
+2. Membantu user mengecek jadwal kosong atau free.
+3. Pemberitahuan pelaksanaan jadwal kepada user.
+
+Masalah yang diatasi:
+1. User yang jadwalnya berantakan.
+2. User yang kesulitan mencari jadwal kosong untuk kegiatan.
+3. User yang terlambat melaksanakan jadwal karena tidak ada pengingat.
+
+Fitur Website:
+1. User login untuk database.
+2. Pengisian jadwal (*jadwal bebas diisi oleh user tergantung jadwal si user)
+3. Pengubahan jadwal (*jika si user ingin merubah jadwalnya)
+4. Pengecekan jadwal kosong (*nanti disini muncul seperti: "Cari jadwal kosong"(user pilih y/n. jika n=kembali), y = "Pilih tanggal"(user input tanggal), selesai="kisaran jam"(user input jam), selesai=(muncul laporan jadwalnya mulai dari: ada jadwal apa saja disitu, jadwal yang kosong yang mana), selesai="pilih jadwal"(user pilih y/n. jika n=kembali ke laporan jadwalnya), y=(user disuruh pilih jam mulai yang ingin dipakai)->(jika sudah jam mulai, user pilih jam selesai)->(user diminta apakah ingin diatur pengingat? y/n. jika n="Jadwal Berhasil Ditambahkan"), y="Jadwal dan Pengingat Berhasil Ditambahkan". return tampilan jadwal awal.
+5. Fitur pengingat
+6. Laporan bug
+
+Apa yang dibutuhkan:
+1. tampilan = index dan style
+2. rute atau alur = script
+3. database
+4. assets
+
+Pengembangan:
+1. Desain
+2. Penambahan fitur
+3. Pemeliharaan
