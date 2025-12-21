@@ -44,8 +44,8 @@ Kepada pengguna aplikasi web ini, gunakan dengan bijak dan semoga bermanfaat. Ma
 ## Tim Pengembang
 
 - Gerald Jepedro Sitorus = BackEnd dan Desain Web [@g3raldatsc](https://github.com/g3raldatsc)
-- Excelyno Magenta       = FrontEnd dan Tester
-- Vincent Alexander      = Desain Web
+- Excelyno Magenta       = FrontEnd dan Tester [@excelyno](https://github.com/excelyno)
+- Vincent Alexander      = Desain Web [@gylax404](https://github.com/gylax404)
 
 <p align="center">
   <img src="https://media.tenor.com/d7-scpQa2VYAAAAM/umamusume-uma-musume.gif" width="200" alt="Anime Gif">
