@@ -14,10 +14,24 @@
                 Masuk dengan Google
             </button>
 
-            <p class="footer-text">Project oleh Gerald & Excel</p>
+            <p class="footer-text">Project oleh Gerald, Excel, & Vincent</p>
         </div>
     </div>
-    
+
+    <div id="halaman-beranda" style="display: none;">
+        <nav class="navbar">
+            <h2>Halo, <span id="teks-sapaan">User</span>! 👋</h2>
+            <button id="tombol-keluar" class="btn-logout">Keluar</button>
+        </nav>
+        
+        <div class="konten-utama">
+            <h3>Jadwal Kamu:</h3>
+            <div class="area-jadwal-kosong">
+                <p>Belum ada jadwal yang diatur.</p>
+            </div>
+        </div>
+    </div>
+
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 
