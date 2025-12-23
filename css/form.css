@@ -1,0 +1,86 @@
+.pilih-hari-wrapper {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    scrollbar-width: none;
+}
+.pilih-hari-wrapper::-webkit-scrollbar { display: none; }
+
+.hari-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #b2bec3;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    text-align: center;
+}
+
+.hari-btn.active {
+    background: rgba(9, 132, 227, 0.4);
+    color: #fff;
+    border-color: #81ecec;
+    box-shadow: 0 0 10px rgba(129, 236, 236, 0.3);
+}
+
+.info-box {
+    background: rgba(9, 132, 227, 0.2);
+    border-left: 3px solid #0984e3;
+    padding: 15px;
+    border-radius: 8px;
+    color: #dfe6e9;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.form-input-jadwal {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-size: 11px;
+    color: #b2bec3;
+}
+
+.form-input-jadwal input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #636e72;
+    color: #fff;
+    padding: 5px 0;
+    outline: none;
+    width: 100%;
+}
+.form-input-jadwal input:focus {
+    border-bottom-color: #81ecec;
+}
+
+.btn-tambah-icon {
+    background: #00cec9;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+    transition: transform 0.2s;
+}
+.btn-tambah-icon:active { transform: scale(0.9); }

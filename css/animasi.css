@@ -1,0 +1,26 @@
+/* ini style animasi salju versi ya, bukan script */
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 1; 
+    animation: jatuh linear forwards;
+    box-shadow: 0 0 5px rgba(255,255,255,0.9); 
+}
+
+@keyframes jatuh {
+    0% {
+        transform: translateY(-10vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(105vh) translateX(20px); 
+        opacity: 0.3;
+    }
+}

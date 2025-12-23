@@ -1,0 +1,26 @@
+.profil-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.btn-logout {
+    padding: 8px 25px;
+    background: transparent;
+    color: #ff7675; 
+    border: 1px solid #ff7675;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.btn-logout:hover {
+    background-color: #ff7675;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 118, 117, 0.4);
+}

@@ -1,0 +1,14 @@
+/* main.css */
+
+@import url('base.css');
+
+/* Login Page */
+@import url('login.css');
+
+/* Komponen Beranda */
+@import url('layout.css');
+@import url('navbar.css');
+@import url('jadwal.css');
+@import url('form.css');
+@import url('profil.css');
+@import url('animasi.css');

@@ -1,0 +1,34 @@
+#halaman-dashboard {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.fitur-konten {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 80px; 
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.konten-utama {
+    margin-top: 100px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.konten-utama h3 {
+    color: #dfe6e9;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}

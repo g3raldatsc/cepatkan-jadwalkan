@@ -1,90 +1,7 @@
-/* Script WINTER THEME */
-
-const tombolMasuk = document.getElementById("tombol-masuk-google");
-const tombolKeluar = document.getElementById("tombol-keluar");
-const halamanMasuk = document.getElementById("halaman-masuk");
-const halamanDashboard = document.getElementById("halaman-dashboard");
-
-const teksSapaan = document.getElementById("teks-sapaan");
-const namaProfil = document.getElementById("nama-profil");
-const emailProfil = document.getElementById("email-profil");
-const imgProfil = document.getElementById("img-profil");
+// js/jadwal.js
 
 let hariTerpilih = "Senin"; 
 let unsubscribeJadwal = null;
-
-
-function masukGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-        .then((result) => {
-            console.log("Login sukses:", result.user.displayName);
-        })
-        .catch((error) => {
-            alert("Gagal masuk: " + error.message);
-        });
-}
-
-function keluarSistem() {
-    if (confirm("Yakin ingin keluar akun?")) {
-        auth.signOut().then(() => {
-            location.reload();
-        });
-    }
-}
-
-tombolMasuk.addEventListener("click", masukGoogle);
-tombolKeluar.addEventListener("click", keluarSistem);
-
-
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        halamanMasuk.style.display = "none";
-        halamanDashboard.style.display = "block";
-
-        const namaDepan = user.displayName.split(" ")[0];
-        teksSapaan.innerText = namaDepan;
-        namaProfil.innerText = user.displayName;
-        emailProfil.innerText = user.email;
-        if (user.photoURL) imgProfil.src = user.photoURL;
-
-        updateTanggal();
-        muatJadwalBeranda();
-        gantiMenu('beranda');
-
-    } else {
-        halamanMasuk.style.display = "flex";
-        halamanDashboard.style.display = "none";
-    }
-});
-
-
-function gantiMenu(menu) {
-    document.getElementById('fitur-beranda').style.display = 'none';
-    document.getElementById('fitur-atur').style.display = 'none';
-    document.getElementById('fitur-profil').style.display = 'none';
-    
-    document.getElementById('fitur-' + menu).style.display = 'block';
-
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-
-    if(menu === 'beranda') navItems[0].classList.add('active');
-    if(menu === 'profil') navItems[1].classList.add('active');
-
-    if (menu === 'atur') {
-        muatJadwalEdit(); 
-    } else if (menu === 'beranda') {
-        muatJadwalBeranda();
-    }
-}
-
-function updateTanggal() {
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    const today = new Date();
-    document.getElementById("info-tanggal").innerText = today.toLocaleDateString('id-ID', options);
-}
-
 
 function pilihHariEdit(hari, elemen) {
     hariTerpilih = hari;
@@ -194,27 +111,3 @@ function muatJadwalBeranda() {
             });
         });
 }
-
-/* Efek Bola Salju */
-
-function buatSalju() {
-    const salju = document.createElement('div');
-    salju.classList.add('snowflake');
-    salju.style.left = Math.random() * 100 + 'vw';
-    
-    const ukuran = Math.random() * 3 + 2; 
-    salju.style.width = ukuran + 'px';
-    salju.style.height = ukuran + 'px';
-    
-    const durasi = Math.random() * 7 + 8; 
-    salju.style.animationDuration = durasi + 's';
-    salju.style.opacity = Math.random() * 0.5 + 0.3;
-    
-    document.body.appendChild(salju);
-    
-    setTimeout(() => {
-        salju.remove();
-    }, durasi * 1000);
-}
-
-setInterval(buatSalju, 300);

@@ -1,4 +1,4 @@
-// Konfigurasinya
+// js/firebase-config.js
 
 const firebaseConfig = {
   apiKey: "AIzaSyBocDPFYJhdGkCgPW7oDECyqEiFs3GOF1U",
@@ -9,11 +9,6 @@ const firebaseConfig = {
   appId: "1:138163356272:web:38ccec0ff404588dc72ab5"
 };
 
-// Inisialisasinya
-
 firebase.initializeApp(firebaseConfig);
-
-// ini ingat ya. kubuat fungsi baru biar gampang manggil databasenya
-
 const db = firebase.firestore();
 const auth = firebase.auth();

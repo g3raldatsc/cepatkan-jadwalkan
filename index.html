@@ -6,10 +6,9 @@
     <title>CJ Web</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
@@ -20,17 +19,14 @@
     <div id="halaman-masuk" class="container-tengah">
         <div class="kartu-login">
             <h1>CEPATKAN JADWALKAN</h1>
-            
             <div class="quote-area">
                 <p class="quote-text">"Waktu yang berlalu tak bisa kembali.<br>Atur sekarang, nikmati nanti."</p>
                 <p class="quote-sub">Disiplin dan produktif adalah kunci kesuksesan.</p>
             </div>
-            
             <button id="tombol-masuk-google" class="btn-google">
                 <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" width="18">
                 Masuk dengan Google
             </button>
-
             <p class="footer-text">Project oleh Gerald, Excel, Vincent, & Hansen</p>
         </div>
     </div>
@@ -40,16 +36,14 @@
         <div id="fitur-beranda" class="fitur-konten">
             <nav class="navbar">
                 <div>
-                    <h2>Halo, <span id="teks-sapaan">User</span>! 👋</h2>
+                    <h2>Halo, <span id="teks-sapaan">User</span>!</h2>
                     <p class="tanggal-hari-ini" id="info-tanggal">Memuat tanggal...</p>
                 </div>
             </nav>
-            
             <div class="konten-utama">
                 <div class="header-section">
                     <h3>Jadwal Hari Ini:</h3>
                 </div>
-
                 <div id="container-jadwal-beranda" class="list-jadwal-container">
                     <div class="area-jadwal-kosong">
                         <i class="fas fa-snowflake fa-spin" style="font-size: 24px; margin-bottom:10px; color:#81ecec;"></i>
@@ -63,9 +57,7 @@
             <nav class="navbar">
                 <h2>Atur Jadwal ❄️</h2>
             </nav>
-            
             <div class="konten-utama">
-                
                 <div class="pilih-hari-wrapper">
                     <div class="hari-btn active" onclick="pilihHariEdit('Senin', this)">Sen</div>
                     <div class="hari-btn" onclick="pilihHariEdit('Selasa', this)">Sel</div>
@@ -75,11 +67,9 @@
                     <div class="hari-btn" onclick="pilihHariEdit('Sabtu', this)">Sab</div>
                     <div class="hari-btn" onclick="pilihHariEdit('Minggu', this)">Min</div>
                 </div>
-
                 <div class="info-box">
                     <p>Mengatur jadwal hari: <strong id="label-hari-terpilih" style="color:#81ecec;">Senin</strong></p>
                 </div>
-
                 <div class="form-input-jadwal">
                     <div class="input-group">
                         <label>Jam:</label>
@@ -93,13 +83,10 @@
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
-
                 <h3 style="font-size: 16px; margin-top:20px; color:#dfe6e9;">Daftar Kegiatan:</h3>
-                
                 <div id="list-edit-jadwal" class="list-jadwal-container">
                     <p style="text-align:center; font-size:12px; color:#636e72;">Memuat data...</p>
                 </div>
-
             </div>
         </div>
 
@@ -107,14 +94,12 @@
             <nav class="navbar">
                 <h2>Profil Kamu</h2>
             </nav>
-            
             <div class="konten-utama" style="text-align: center; margin-top: 50px;">
                 <div class="profil-avatar">
                     <img id="img-profil" src="https://ui-avatars.com/api/?name=User" alt="Profil">
                 </div>
                 <h3 id="nama-profil" style="color:#fff; margin-bottom:5px;">Nama User</h3>
                 <p id="email-profil" style="color:#b2bec3; font-size:14px; margin-bottom: 30px;">user@email.com</p>
-                
                 <button id="tombol-keluar" class="btn-logout">
                     <i class="fas fa-sign-out-alt"></i> Keluar Akun
                 </button>
@@ -126,23 +111,20 @@
                 <i class="fas fa-home"></i>
                 <span>Beranda</span>
             </div>
-            
             <div class="nav-item-tengah" onclick="gantiMenu('atur')">
                 <div class="lingkaran-tambah">
                     <i class="fas fa-plus"></i>
                 </div>
             </div>
-
             <div class="nav-item" onclick="gantiMenu('profil')">
                 <i class="fas fa-user"></i>
                 <span>Profil</span>
             </div>
         </div>
-
     </div>
 
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
-
-</body>
+    <script src="js/firebase-config.js"></script> <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/jadwal.js"></script>
+    <script src="js/main.js"></script> </body>
 </html>
