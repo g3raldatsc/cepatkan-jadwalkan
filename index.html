@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jadwal.css"> 
 
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
@@ -55,6 +56,17 @@
             <div class="konten-utama">
                 <div class="header-section">
                     <h3>Jadwal Hari Ini:</h3>
+                    
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <span id="text-progress">0% Selesai</span>
+                            <span id="text-total">0/0 Tugas</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div id="progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div id="container-jadwal-beranda" class="list-jadwal-container">
                     <div class="area-jadwal-kosong">
@@ -106,6 +118,54 @@
             </div>
         </div>
 
+        <div id="fitur-informasi" class="fitur-konten" style="display: none;">
+            <nav class="navbar">
+                <div class="nav-text">
+                    <h2>Informasi</h2>
+                </div>
+                <img src="assets/images/logo-app.png" alt="CJ Logo" class="nav-logo">
+            </nav>
+
+            <div class="konten-utama" style="padding-bottom: 80px;">
+                <div class="info-card">
+                    <h3>Sistem Poin & Gelar</h3>
+                    <p>Aplikasi ini menggunakan sistem presensi harian. Selesaikan kegiatanmu untuk naik pangkat!</p>
+                    <ul class="info-list">
+                        <li><strong>100% Selesai:</strong> +10 Poin (Sempurna)</li>
+                        <li><strong>>50% Selesai:</strong> +5 Poin (Bagus)</li>
+                        <li><strong><50% Selesai:</strong> +2 Poin (Semangat)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Aturan</h3>
+                    <ul class="info-list">
+                    <li>Presensi bisa dilakukan jika kegiatan yang ditambahkan minimal 10 kegiatan. "Ayolah disiplin! Atur jadwalmu sebagaimana jadwalmu yang sebenarnya."</li>
+                    <li>Jadwal kegiatan hanya bisa ditambahkan jika jarak kegiatan x dengan kegiatan y 30 menit atau lebih.</li>
+                    <li>Agar kamu disiplin, tombol presensi hanya bisa ditekan jika jam kegiatan sudah tiba.</li>
+                    <li>Jika kamu tidak melakukan presensi saat 20 menit telah berlalu dari jadwal tiba, maka tombol presensi akan terkunci dan kamu tidak dapat poin</li>
+                    <li>Tombol presensi akan otomatis tidak bisa ditekan kembali jika kamu sudah presensi.</li>
+                    <li>Silakan refresh jika tombol centang untuk presensi tidak muncul saat waktu tiba.</li>
+                </div>
+
+                <div class="info-card">
+                    <h3>Tingkatan Gelar</h3>
+                    <ul class="rank-list">
+                        <li style="color: #74b9ff;">Perintis (0 Poin)</li>
+                        <li style="color: #00b894;">Pemula Disiplin (280 Poin)</li>
+                        <li style="color: #fdcb6e;">Master Disiplin (840 Poin)</li>
+                        <li style="color: #e17055;">Pahlawan Kedisiplinan (1400 Poin)</li>
+                        <li style="color: #fab1a0;">Pencipta Kedisiplinan (2000+ Poin)</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #636e72;">
+                    <p>Versi Aplikasi x.x</p>
+                    <p>Dibuat dengan cinta oleh Kami Developer Cepatkan Jadwalkan</p>
+                </div>
+            </div>
+        </div>
+
         <div id="fitur-profil" class="fitur-konten" style="display: none;">
             <nav class="navbar">
                 <div class="nav-text">
@@ -114,13 +174,27 @@
                 <img src="assets/images/logo-app.png" alt="CJ Logo" class="nav-logo">
             </nav>
 
-            <div class="konten-utama" style="text-align: center; margin-top: 110px;">
+            <div class="konten-utama" style="text-align: center; margin-top: 50px;">
                 <div class="profil-avatar">
                     <img id="img-profil" src="https://ui-avatars.com/api/?name=User" alt="Profil">
+                    <div class="level-badge" id="level-badge">0 Points</div>
                 </div>
+
                 <h3 id="nama-profil" style="color:#fff; margin-bottom:5px;">Nama User</h3>
-                <p id="email-profil" style="color:#b2bec3; font-size:14px; margin-bottom: 30px;">user@email.com</p>
-                <button id="tombol-keluar" class="btn-logout">
+                <p id="gelar-user" style="color:#b2bec3; font-weight:600; font-size:14px; margin-bottom:5px;">Perintis</p>
+                <p id="email-profil" style="color:#636e72; font-size:12px; margin-bottom: 25px;">user@email.com</p>
+
+                <div class="xp-container">
+                    <div class="xp-info">
+                        <span id="text-xp-current">0 Poin</span>
+                        <span id="text-xp-next">Next: 280 Poin</span>
+                    </div>
+                    <div class="xp-bar-bg">
+                        <div id="xp-bar-fill" class="xp-bar-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <button id="tombol-keluar" class="btn-logout" style="margin-top: 30px;">
                     <i class="fas fa-sign-out-alt"></i> Keluar Akun
                 </button>
             </div>
@@ -131,10 +205,13 @@
                 <i class="fas fa-home"></i>
                 <span>Beranda</span>
             </div>
-            <div class="nav-item-tengah" onclick="gantiMenu('atur')">
-                <div class="lingkaran-tambah">
-                    <i class="fas fa-plus"></i>
-                </div>
+            <div class="nav-item" onclick="gantiMenu('atur')">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Jadwal</span>
+            </div>
+            <div class="nav-item" onclick="gantiMenu('informasi')">
+                <i class="fas fa-info-circle"></i>
+                <span>Informasi</span>
             </div>
             <div class="nav-item" onclick="gantiMenu('profil')">
                 <i class="fas fa-user"></i>
