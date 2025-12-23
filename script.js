@@ -1,4 +1,5 @@
-/* VARIABEL & DOM ELEMENTS */
+/* Script WINTER THEME */
+
 const tombolMasuk = document.getElementById("tombol-masuk-google");
 const tombolKeluar = document.getElementById("tombol-keluar");
 const halamanMasuk = document.getElementById("halaman-masuk");
@@ -9,11 +10,9 @@ const namaProfil = document.getElementById("nama-profil");
 const emailProfil = document.getElementById("email-profil");
 const imgProfil = document.getElementById("img-profil");
 
-// Variabel Global Jadwal
 let hariTerpilih = "Senin"; 
 let unsubscribeJadwal = null;
 
-/* AUTHENTICATION */
 
 function masukGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -29,7 +28,7 @@ function masukGoogle() {
 function keluarSistem() {
     if (confirm("Yakin ingin keluar akun?")) {
         auth.signOut().then(() => {
-            location.reload(); // Refresh halaman biar bersih
+            location.reload();
         });
     }
 }
@@ -37,52 +36,42 @@ function keluarSistem() {
 tombolMasuk.addEventListener("click", masukGoogle);
 tombolKeluar.addEventListener("click", keluarSistem);
 
-/* STATE MANAGEMENT (LOGIN CHECK) */
 
 auth.onAuthStateChanged((user) => {
     if (user) {
-        // Tampilkan Dashboard
         halamanMasuk.style.display = "none";
         halamanDashboard.style.display = "block";
 
-        // Isi Data Profil
         const namaDepan = user.displayName.split(" ")[0];
         teksSapaan.innerText = namaDepan;
         namaProfil.innerText = user.displayName;
         emailProfil.innerText = user.email;
         if (user.photoURL) imgProfil.src = user.photoURL;
 
-        // Inisialisasi Data
         updateTanggal();
         muatJadwalBeranda();
         gantiMenu('beranda');
 
     } else {
-        // Tampilkan Login
         halamanMasuk.style.display = "flex";
         halamanDashboard.style.display = "none";
     }
 });
 
-/* NAVIGASI & TABS */
 
 function gantiMenu(menu) {
-    // Hide semua
     document.getElementById('fitur-beranda').style.display = 'none';
     document.getElementById('fitur-atur').style.display = 'none';
     document.getElementById('fitur-profil').style.display = 'none';
     
-    // Show target
     document.getElementById('fitur-' + menu).style.display = 'block';
 
-    // Update Nav Icons
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => item.classList.remove('active'));
 
     if(menu === 'beranda') navItems[0].classList.add('active');
     if(menu === 'profil') navItems[1].classList.add('active');
 
-    // Load Data Sesuai Tab
     if (menu === 'atur') {
         muatJadwalEdit(); 
     } else if (menu === 'beranda') {
@@ -96,9 +85,7 @@ function updateTanggal() {
     document.getElementById("info-tanggal").innerText = today.toLocaleDateString('id-ID', options);
 }
 
-/* LOGIKA JADWAL (CRUD) */
 
-// 1. Pilih Hari di Tab Atur
 function pilihHariEdit(hari, elemen) {
     hariTerpilih = hari;
     document.getElementById("label-hari-terpilih").innerText = hari;
@@ -110,7 +97,6 @@ function pilihHariEdit(hari, elemen) {
     muatJadwalEdit();
 }
 
-// 2. Tambah Jadwal
 function tambahJadwal() {
     const user = auth.currentUser;
     if (!user) return;
@@ -132,7 +118,6 @@ function tambahJadwal() {
     }).catch((e) => alert("Error: " + e.message));
 }
 
-// 3. Muat List Edit (Tab Atur)
 function muatJadwalEdit() {
     const user = auth.currentUser;
     if (!user) return;
@@ -168,7 +153,6 @@ function muatJadwalEdit() {
         });
 }
 
-// 4. Hapus Jadwal
 function hapusJadwal(idDoc) {
     if(confirm("Hapus kegiatan ini?")) {
         const user = auth.currentUser;
@@ -176,7 +160,6 @@ function hapusJadwal(idDoc) {
     }
 }
 
-// 5. Muat Beranda (Hari Ini)
 function muatJadwalBeranda() {
     const user = auth.currentUser;
     if (!user) return;
@@ -212,7 +195,7 @@ function muatJadwalBeranda() {
         });
 }
 
-/* EFEK VISUAL (SALJU) */
+/* Efek Bola Salju */
 
 function buatSalju() {
     const salju = document.createElement('div');
