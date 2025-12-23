@@ -104,15 +104,16 @@
 }
 
 .nav-logo {
-    height: 45px;       
-    width: auto;        
+    height: 60px;       
+    width: auto;
     object-fit: contain;
-    margin-left: 15px;  
+    margin-left: 15px;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
+/* Mobile */
 @media (max-width: 480px) {
     .nav-logo {
-        height: 35px; 
+        height: 50px; 
     }
 }
