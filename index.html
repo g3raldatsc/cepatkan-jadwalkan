@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CJ Web</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo-app.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -35,11 +37,13 @@
         
         <div id="fitur-beranda" class="fitur-konten">
             <nav class="navbar">
-                <div>
+                <div class="nav-text">
                     <h2>Halo, <span id="teks-sapaan">User</span>!</h2>
                     <p class="tanggal-hari-ini" id="info-tanggal">Memuat tanggal...</p>
                 </div>
+                <img src="assets/images/logo-app.png" alt="CJ Logo" class="nav-logo">
             </nav>
+
             <div class="konten-utama">
                 <div class="header-section">
                     <h3>Jadwal Hari Ini:</h3>
@@ -55,8 +59,12 @@
 
         <div id="fitur-atur" class="fitur-konten" style="display: none;">
             <nav class="navbar">
-                <h2>Atur Jadwal ❄️</h2>
+                <div class="nav-text">
+                    <h2>Atur Jadwal ❄️</h2>
+                </div>
+                <img src="assets/images/logo-app.png" alt="CJ Logo" class="nav-logo">
             </nav>
+
             <div class="konten-utama">
                 <div class="pilih-hari-wrapper">
                     <div class="hari-btn active" onclick="pilihHariEdit('Senin', this)">Sen</div>
@@ -92,9 +100,13 @@
 
         <div id="fitur-profil" class="fitur-konten" style="display: none;">
             <nav class="navbar">
-                <h2>Profil Kamu</h2>
+                <div class="nav-text">
+                    <h2>Profil Kamu</h2>
+                </div>
+                <img src="assets/images/logo-app.png" alt="CJ Logo" class="nav-logo">
             </nav>
-            <div class="konten-utama" style="text-align: center; margin-top: 50px;">
+
+            <div class="konten-utama" style="text-align: center; margin-top: 110px;">
                 <div class="profil-avatar">
                     <img id="img-profil" src="https://ui-avatars.com/api/?name=User" alt="Profil">
                 </div>
@@ -123,8 +135,10 @@
         </div>
     </div>
 
-    <script src="js/firebase-config.js"></script> <script src="js/auth.js"></script>
+    <script src="js/firebase-config.js"></script> 
+    <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/jadwal.js"></script>
-    <script src="js/main.js"></script> </body>
+    <script src="js/main.js"></script> 
+</body>
 </html>

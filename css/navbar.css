@@ -94,3 +94,25 @@
     transform: scale(1.1);
     box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
 }
+
+/* Perbaikan laman profil */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 45px;       
+    width: auto;        
+    object-fit: contain;
+    margin-left: 15px;  
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        height: 35px; 
+    }
+}
