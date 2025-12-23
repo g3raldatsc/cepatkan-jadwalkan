@@ -1,7 +1,8 @@
 # Apa itu Cepatkan Jadwalkan?
 
-**Cepatkan Jadwalkan** adalah aplikasi web sederhana yang membantu pengguna mengelola jadwal hariannya dengan baik. **Cepatkan Jadwalkan** dirancang dengan desain dan tampilan yang mengandalkan html dan css, dan javascript sebagai alur logika berjalannya aplikasi web **Cepatkan Jadwalkan**
+**Cepatkan Jadwalkan** adalah aplikasi web sederhana yang membantu pengguna mengelola jadwal hariannya dengan baik. **Cepatkan Jadwalkan** dirancang dengan desain dan tampilan yang mengandalkan html dan css, dan javascript sebagai alur logika berjalannya aplikasi web **Cepatkan Jadwalkan**. Akses Aplikasi web ini lebih awal melalui link berikut:
 
+[Cepatkan Jadwalkan](https://cepatkan-jadwalkan.netlify.app/)
 ---
 
 ## Tujuan Pengembangan
@@ -22,10 +23,22 @@ Adapun fitur utama dari aplikasi web ini ialah:
     Aplikasi web ini dikembangkan untuk pengguna mengatur jadwal harian mereka. Pengguna bebas mengatur jadwal mereka tiap harinya dan akan berulang sampai pengguna mengatur ulang jadwal harian mereka.
 
 3. Fitur Pengingat
-    Aplikasi web ini memiliki fitur pengingat jadwal pengguna melalui notifikasi yang muncul pada perangkat.
+    Aplikasi web ini memiliki fitur pengingat jadwal pengguna melalui notifikasi yang muncul pada perangkat (dalam tahap pengembangan).
 
 4. Desain Web
     Kami akan selalu mengupdate bagian desain web di tiap empat musim. Hal ini bersesuaian dengan tujuan pengembangan aplikasi web ini yaitu untuk  melatih hardskill kami dalam pengembangan desain web.
+
+5. Fitur Presensi
+    Aplikasi web ini menyediakan fitur presensi untuk melatih kedisiplinan (baca poin no.6).
+
+6. Fitur Permainan Sederhana
+    Aplikasi web ini menyediakan fitur permainan sederhana melalui presensi harian. Aturan permainan bisa dicek pada tab "Informasi" di aplikasi web ini. Akses awal web ini melalui: [Cepatkan Jadwalkan](https://cepatkan-jadwalkan.netlify.app/)
+
+---
+
+## Dokumentasi Aplikasi Web
+
+- (coming soon) early acces: [Cepatkan Jadwalkan](https://cepatkan-jadwalkan.netlify.app/)
 
 ---
 
