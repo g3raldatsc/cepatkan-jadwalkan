@@ -45,7 +45,7 @@ Kepada pengguna aplikasi web ini, gunakan dengan bijak dan semoga bermanfaat. Ma
 
 - Gerald Jepedro Sitorus = BackEnd dan Desain Web [@g3raldatsc](https://github.com/g3raldatsc)
 - Excelyno Magenta       = FrontEnd dan Tester [@excelyno](https://github.com/excelyno)
-- Vincent Alexander      = Desain Web [@gylax404](https://github.com/gylax404)
+- Vincent Alexander      = Desain Web [@Android-Stuff](https://github.com/Android-Stuff)
 - HS WasTaken            = Trainee [@DrinkingTracker](https://github.com/DrinkingTracker)
 
 <p align="center">
