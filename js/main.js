@@ -185,6 +185,8 @@ document.addEventListener("DOMContentLoaded", () => {
         logo.style.cursor = "pointer"; 
         logo.onclick = tampilkanDev;   
     });
+
+    document.getElementById("Update-Tahun-Otomatis").innerText = new Date().getFullYear();
 });
 
 window.onclick = function(event) {
