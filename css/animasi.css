@@ -25,19 +25,14 @@
     }
 }
 
-/* --- ANIMASI LOADING LOGO --- */
-
-/* 1. Definisikan gerakan berputar (360 derajat) */
 @keyframes muter-terus {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* 2. Kelas untuk gambar logo yang akan diloading */
 .loading-logo {
-    width: 60px;           /* Ukuran logo loading (bisa diatur) */
+    width: 60px;          
     height: auto;
-    margin-bottom: 15px;   /* Jarak antara logo dan teks "Memuat..." */
-    /* Terapkan animasi: nama durasi tipe pengulangan */
+    margin-bottom: 15px;   
     animation: muter-terus 2s linear infinite; 
 }

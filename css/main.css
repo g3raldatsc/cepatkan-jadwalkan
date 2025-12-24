@@ -161,3 +161,116 @@
     box-sizing: border-box; 
     width: 100%;
 }
+
+/* Blog */
+
+#modal-developer {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.dev-container {
+    background: #1e272e;
+    padding: 25px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    border: 1px solid #636e72;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dev-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dev-header h2 {
+    color: #00cec9;
+    margin-bottom: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #b2bec3;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: #ff7675; }
+
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+}
+
+@media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+.dev-card {
+    background: #2d3436;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #485460;
+    transition: transform 0.2s;
+}
+
+.dev-card:hover {
+    transform: translateY(-5px);
+    border-color: #00cec9;
+}
+
+.dev-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00cec9;
+    margin-bottom: 10px;
+}
+
+.dev-name {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.dev-email {
+    color: #b2bec3;
+    font-size: 10px;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.dev-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.dev-socials a {
+    color: #dfe6e9;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.dev-socials a:hover { color: #00cec9; transform: scale(1.2); }

@@ -147,11 +147,8 @@
     transform: scale(1.1);
 }
 
-/* ... (kode css sebelumnya biarkan saja) ... */
-
-/* Tampilan Saat Terlambat / Hangus */
 .btn-check.terlambat {
-    border-color: #ff7675; /* Merah kalem */
+    border-color: #ff7675; 
     color: #ff7675;
     cursor: not-allowed;
     opacity: 0.8;
@@ -166,7 +163,6 @@
     background: rgba(255, 118, 117, 0.1);
 }
 
-/* Biar ikon gembok pas tengah */
 .fa-lock {
     font-size: 12px;
 }

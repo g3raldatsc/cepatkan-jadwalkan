@@ -150,3 +150,46 @@ function muatDataLevel(user) {
 
 // Efek Salju
 setInterval(buatSalju, 300);
+
+function kirimLaporanWA() {
+    const nama = document.getElementById("input-lapor-nama").value;
+    const tipe = document.getElementById("input-lapor-tipe").value;
+    const ket = document.getElementById("input-lapor-ket").value;
+    const desk = document.getElementById("input-lapor-desk").value;
+
+    if (nama === "" || ket === "" || desk === "") {
+        alert("Harap isi semua kolom laporan!");
+        return;
+    }
+
+    const nomorWA = "6281234008004";
+    const pesan = `Halo Developer, saya ingin ${tipe}.\n\nNama: ${nama}\nJudul: ${ket}\nDeskripsi: ${desk}\n\nMohon dicek, terima kasih!`;
+
+    const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, "_blank");
+}
+
+/* blog */
+
+function tampilkanDev() {
+    document.getElementById("modal-developer").style.display = "flex";
+}
+
+function tutupDev() {
+    document.getElementById("modal-developer").style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logos = document.querySelectorAll(".nav-logo");
+    logos.forEach(logo => {
+        logo.style.cursor = "pointer"; 
+        logo.onclick = tampilkanDev;   
+    });
+});
+
+window.onclick = function(event) {
+    const modal = document.getElementById("modal-developer");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

@@ -164,41 +164,27 @@ function muatJadwalBeranda() {
 
                 container.innerHTML += `
                     <div class="kartu-jadwal ${statusClass}" style="
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: space-between;
-                        background: #2d3436; 
-                        padding: 15px; 
-                        margin-bottom: 12px; 
-                        border-radius: 12px; 
+                        display: flex; align-items: center; justify-content: space-between;
+                        background: #2d3436; padding: 15px; margin-bottom: 12px; border-radius: 12px; 
                         border-left: 5px solid ${data.selesai ? '#00b894' : (kurangJadwal ? '#d63031' : '#00cec9')};
                         box-shadow: 0 4px 6px rgba(0,0,0,0.3);
                     ">
-                        
                         <div style="margin-right: 15px;">
                             <button id="btn-${doc.id}" class="btn-check" ${disabled} ${clickFunc} style="
-                                width: 45px; 
-                                height: 45px; 
-                                border-radius: 50%; 
-                                border: none; 
+                                width: 45px; height: 45px; border-radius: 50%; border: none; 
                                 cursor: ${disabled ? 'not-allowed' : 'pointer'}; 
-                                background: ${tombolColor}; 
-                                color: white;
-                                font-size: 1.2em;
-                                transition: transform 0.2s;
+                                background: ${tombolColor}; color: white; font-size: 1.2em;
                                 display: flex; align-items: center; justify-content: center;
+                                transition: transform 0.2s;
                             ">
                                 ${icon}
                             </button>
                         </div>
-
                         <div style="flex-grow: 1; display: flex; flex-direction: column;">
                             <span style="font-size: 1.1em; font-weight: 500; color: #dfe6e9;">${data.kegiatan}</span>
                             <span style="font-size: 0.9em; color: #b2bec3; margin-top: 4px;">Pukul: ${data.jam}</span>
                         </div>
-
                         ${statusLabel}
-
                     </div>`;
             });
 
@@ -225,11 +211,9 @@ async function presensiSekali(docId) {
 
     try {
         const user = auth.currentUser;
-        
         await db.collection("users").doc(user.uid).collection("jadwal").doc(docId).update({
             selesai: true 
         });
-
         await hitungDanSimpanXP(user.uid);
 
     } catch (err) {
@@ -247,6 +231,12 @@ async function presensiSekali(docId) {
 function hitungDanSimpanXP(uid) {
     const hariIniIndo = new Date().toLocaleDateString('id-ID', { weekday: 'long' });
     
+    const now = new Date();
+    const offset = now.getTimezoneOffset() * 60000; 
+    const todayStr = (new Date(now - offset)).toISOString().split('T')[0];
+
+    console.log("Checking XP for date:", todayStr);
+
     return db.collection("users").doc(uid).collection("jadwal")
         .where("hari", "==", hariIniIndo).get()
         .then((snapshot) => {
@@ -257,6 +247,7 @@ function hitungDanSimpanXP(uid) {
             let targetXP = 0;
             const pct = total === 0 ? 0 : (selesai / total) * 100;
 
+            // Logic Poin
             if (total < 10) {
                 if (selesai > 0) targetXP = 2; 
             } else {
@@ -265,17 +256,22 @@ function hitungDanSimpanXP(uid) {
                 else if (selesai > 0) targetXP = 2;
             }
 
-            const todayStr = new Date().toISOString().split('T')[0];
             const userRef = db.collection("users").doc(uid);
 
             return db.runTransaction((t) => {
                 return t.get(userRef).then((doc) => {
                     if (!doc.exists) return;
                     const data = doc.data();
+                    
+                    // Reset poin harian jika tanggal beda
                     let recordedDailyXP = data.dailyXP || 0;
-                    if (data.lastXPDate !== todayStr) recordedDailyXP = 0;
+                    if (data.lastXPDate !== todayStr) {
+                        recordedDailyXP = 0; 
+                    }
 
                     const delta = targetXP - recordedDailyXP;
+                    
+                    console.log(`Target: ${targetXP}, Recorded: ${recordedDailyXP}, Delta: ${delta}`);
 
                     if (delta !== 0) {
                         t.update(userRef, {
@@ -288,7 +284,3 @@ function hitungDanSimpanXP(uid) {
             });
         });
 }
-
-
-// KEGIATAN YANG PALING KUBENCI ADALAH DEBUGGING BANGSAT
-// KALAU DEBUGGING JADI ORANG, PASTI MUKANYA MIRIP BAHLIL
