@@ -50,6 +50,8 @@ auth.onAuthStateChanged((user) => {
     }
 });
 
+//ganti menu
+
 function gantiMenu(menu) {
     document.getElementById("fitur-beranda").style.display = "none";
     document.getElementById("fitur-atur").style.display = "none";
@@ -74,6 +76,12 @@ function gantiMenu(menu) {
     if (menu === 'atur') navItems[1].classList.add("active");
     if (menu === 'informasi') navItems[2].classList.add("active");
     if (menu === 'profil') navItems[3].classList.add("active");
+
+    window.gantiMenu = gantiMenu;
+    window.kirimLaporanWA = kirimLaporanWA;
+    window.tampilkanDev = tampilkanDev;
+    window.tutupDev = tutupDev;
+
 }
 
 // logic game
