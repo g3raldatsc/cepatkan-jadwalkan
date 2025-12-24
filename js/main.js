@@ -1,10 +1,4 @@
 // js/main.js
-import { getWeatherByCoords, getWeatherByCity } from "./weatherService.js";
-
-const weatherBox = document.getElementById("weather-box");
-const cityForm   = document.getElementById("city-form");
-const cityInput  = document.getElementById("city-input");
-
 
 const tombolMasuk = document.getElementById("tombol-masuk-google");
 const tombolKeluar = document.getElementById("tombol-keluar");
@@ -28,8 +22,9 @@ auth.onAuthStateChanged((user) => {
         emailProfil.innerText = user.email;
         if (user.photoURL) imgProfil.src = user.photoURL;
 
-        updateTanggal();
-        muatJadwalBeranda();
+        if(typeof updateTanggal === 'function') updateTanggal();
+        if(typeof muatJadwalBeranda === 'function') muatJadwalBeranda();
+        
         muatDataLevel(user); 
         gantiMenu('beranda'); 
 
@@ -50,8 +45,6 @@ auth.onAuthStateChanged((user) => {
     }
 });
 
-//ganti menu
-
 function gantiMenu(menu) {
     document.getElementById("fitur-beranda").style.display = "none";
     document.getElementById("fitur-atur").style.display = "none";
@@ -60,7 +53,7 @@ function gantiMenu(menu) {
 
     if (menu === 'beranda') {
         document.getElementById("fitur-beranda").style.display = "block";
-        muatJadwalBeranda();
+        if(typeof muatJadwalBeranda === 'function') muatJadwalBeranda();
     } else if (menu === 'atur') {
         document.getElementById("fitur-atur").style.display = "block";
     } else if (menu === 'informasi') {
@@ -81,11 +74,9 @@ function gantiMenu(menu) {
     window.kirimLaporanWA = kirimLaporanWA;
     window.tampilkanDev = tampilkanDev;
     window.tutupDev = tutupDev;
-
 }
 
-// logic game
-
+// game logic
 function muatDataLevel(user) {
     db.collection("users").doc(user.uid).onSnapshot((doc) => {
         const data = doc.data();
@@ -162,8 +153,13 @@ function muatDataLevel(user) {
     });
 }
 
-// Efek Salju
-setInterval(buatSalju, 300);
+// efek salju
+
+if(typeof buatSalju === 'function') {
+    setInterval(buatSalju, 300);
+}
+
+// lapor ke si hs
 
 function kirimLaporanWA() {
     const nama = document.getElementById("input-lapor-nama").value;
@@ -183,8 +179,6 @@ function kirimLaporanWA() {
     window.open(url, "_blank");
 }
 
-/* blog */
-
 function tampilkanDev() {
     document.getElementById("modal-developer").style.display = "flex";
 }
@@ -199,8 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
         logo.style.cursor = "pointer"; 
         logo.onclick = tampilkanDev;   
     });
-    // update tahun copyright otomatis
-    document.getElementById("Update-Tahun-Otomatis").innerText = new Date().getFullYear();
+    const tahunElem = document.getElementById("Update-Tahun-Otomatis");
+    if(tahunElem) tahunElem.innerText = new Date().getFullYear();
 });
 
 window.onclick = function(event) {
@@ -209,72 +203,3 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-//weather 
-function formatWeather(data) {
-  if (!data) return "Data cuaca tidak tersedia.";
-
-  const lokasi   = data.name;
-  const suhu     = Math.round(data.main.temp);
-  const kondisi  = data.weather[0].description;
-//   const feels    = Math.round(data.main.feels_like); hidupin kalo perlu
-  const humidity = data.main.humidity;
-
-  return `
-    <strong>${lokasi}</strong><br>
-    ${suhu}°C — ${kondisi}<br>
-    Kelembapan: ${humidity}%
-  `;
-}
-
-//coba pakai lokasi user (kalo mau)
-function loadWeatherByLocation() {
-  if (!navigator.geolocation) {
-    showCityFallback();
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    async pos => {
-      try {
-        const { latitude, longitude } = pos.coords;
-        const data = await getWeatherByCoords(latitude, longitude);
-        weatherBox.innerHTML = formatWeather(data);
-      } catch (err) {
-        console.error(err);
-        showCityFallback();
-      }
-    },
-    err => {
-      console.warn("Lokasi ditolak:", err);
-      showCityFallback();
-    }
-  );
-}
-
-//fallback: user ketik nama kota 
-function showCityFallback() {
-  weatherBox.innerHTML = `
-    Tidak bisa mengambil lokasi otomatis.<br>
-    Silakan cari kota:
-  `;
-  document.getElementById("city-search").style.display = "block";
-}
-
-//event cari kota
-cityForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const city = cityInput.value.trim();
-  if (!city) return;
-
-  weatherBox.innerHTML = "Mengambil data...";
-  try {
-    const data = await getWeatherByCity(city);
-    weatherBox.innerHTML = formatWeather(data);
-  } catch (err) {
-    console.error(err);
-    weatherBox.innerHTML = "Kota tidak ditemukan atau API bermasalah.";
-  }
-});
-
-loadWeatherByLocation();
