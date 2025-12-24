@@ -1,24 +1,5 @@
 // js/ui.js
 
-function gantiMenu(menu) {
-    document.getElementById('fitur-beranda').style.display = 'none';
-    document.getElementById('fitur-atur').style.display = 'none';
-    document.getElementById('fitur-profil').style.display = 'none';
-    
-    document.getElementById('fitur-' + menu).style.display = 'block';
-
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-
-    if(menu === 'beranda') navItems[0].classList.add('active');
-    if(menu === 'profil') navItems[1].classList.add('active');
-
-    if (menu === 'atur') {
-        muatJadwalEdit(); 
-    } else if (menu === 'beranda') {
-        muatJadwalBeranda(); 
-    }
-}
 
 function updateTanggal() {
     const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
