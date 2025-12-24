@@ -1,4 +1,10 @@
 // js/main.js
+import { getWeatherByCoords, getWeatherByCity } from "./weatherService.js";
+
+const weatherBox = document.getElementById("weather-box");
+const cityForm   = document.getElementById("city-form");
+const cityInput  = document.getElementById("city-input");
+
 
 const tombolMasuk = document.getElementById("tombol-masuk-google");
 const tombolKeluar = document.getElementById("tombol-keluar");
@@ -193,3 +199,72 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+//weather 
+function formatWeather(data) {
+  if (!data) return "Data cuaca tidak tersedia.";
+
+  const lokasi   = data.name;
+  const suhu     = Math.round(data.main.temp);
+  const kondisi  = data.weather[0].description;
+//   const feels    = Math.round(data.main.feels_like); hidupin kalo perlu
+  const humidity = data.main.humidity;
+
+  return `
+    <strong>${lokasi}</strong><br>
+    ${suhu}°C — ${kondisi}<br>
+    Kelembapan: ${humidity}%
+  `;
+}
+
+//coba pakai lokasi user (kalo mau)
+function loadWeatherByLocation() {
+  if (!navigator.geolocation) {
+    showCityFallback();
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    async pos => {
+      try {
+        const { latitude, longitude } = pos.coords;
+        const data = await getWeatherByCoords(latitude, longitude);
+        weatherBox.innerHTML = formatWeather(data);
+      } catch (err) {
+        console.error(err);
+        showCityFallback();
+      }
+    },
+    err => {
+      console.warn("Lokasi ditolak:", err);
+      showCityFallback();
+    }
+  );
+}
+
+//fallback: user ketik nama kota 
+function showCityFallback() {
+  weatherBox.innerHTML = `
+    Tidak bisa mengambil lokasi otomatis.<br>
+    Silakan cari kota:
+  `;
+  document.getElementById("city-search").style.display = "block";
+}
+
+//event cari kota
+cityForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const city = cityInput.value.trim();
+  if (!city) return;
+
+  weatherBox.innerHTML = "Mengambil data...";
+  try {
+    const data = await getWeatherByCity(city);
+    weatherBox.innerHTML = formatWeather(data);
+  } catch (err) {
+    console.error(err);
+    weatherBox.innerHTML = "Kota tidak ditemukan atau API bermasalah.";
+  }
+});
+
+loadWeatherByLocation();

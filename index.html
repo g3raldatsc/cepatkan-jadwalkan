@@ -21,6 +21,19 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
 </head>
 <body>
+    <!-- ini weather application   -->
+    <div id="weather-box">Memuat cuaca...</div>
+
+    <div id="city-search" style="display:none;">
+    <form id="city-form">
+        <input id="city-input" placeholder="Cari kota (misal: Jember)" />
+        <button type="submit">Cari</button>
+    </form>
+    </div>
+
+
+    <!-- ini weather application   -->
+
 
     <div id="loading-screen">
         <img src="assets/images/loading-app.png" alt="Loading" class="loading-logo">
@@ -295,11 +308,11 @@
         </div>
     </div>
 </div>
-
+    <!-- <script src="js/weatherService.js"></script> -->
     <script src="js/firebase-config.js"></script> 
     <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/jadwal.js"></script>
-    <script src="js/main.js"></script> 
+    <script type="module" src="js/main.js"></script> 
 </body>
 </html>
