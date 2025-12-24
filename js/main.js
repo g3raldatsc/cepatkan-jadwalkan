@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logo.style.cursor = "pointer"; 
         logo.onclick = tampilkanDev;   
     });
-
+    // update tahun copyright otomatis
     document.getElementById("Update-Tahun-Otomatis").innerText = new Date().getFullYear();
 });
 
